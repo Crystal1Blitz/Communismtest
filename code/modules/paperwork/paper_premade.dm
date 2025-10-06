@@ -141,3 +141,12 @@
 /obj/item/paper/crumpled/fluff/ruin/space/deepstorage/orders
 	name = "\improper Written Log"
 	default_raw_text = "You know the drill, people. Shoot anyone on sight approaching the station. This includes our own colors, conducts the same as usual. Give fair warning to our boys, unless shots have already been fired. Cargo's more valuable this time, and we've gotta get our shit together to get that sweet, sweet raise."
+
+/obj/item/paper/crumpled/fluff/ruin/waste/wasteplanet_recycling
+	name = "\improper Dam Furnace"
+	default_raw_text = "Furnace needs repair again, dumbass junk won't connect to the console, too lazy to do it right now, so whichever sucker has to use the machine next, take the multitool, link it with the console, then walk up to the safety hazard and link 'em together."
+
+/obj/item/paper/crumpled/fluff/ruin/waste/wasteplanet_recycling
+	name = "\improper Reminder"
+	default_raw_text = "Someone remind me to refill the pocket emergency extinguishers with the Anti-Radation foam before the boss throws another fit about having to requisition more toxin kits. <br><i>-David</br></i>"
+
