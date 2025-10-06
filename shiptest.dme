@@ -3494,6 +3494,7 @@
 #include "code\modules\ruins\lavalandruin_code\puzzle.dm"
 #include "code\modules\ruins\lavalandruin_code\surface.dm"
 #include "code\modules\ruins\lavalandruin_code\syndicate_base.dm"
+#include "code\modules\ruins\wasteplanet_ruin_code\recycling.dm"
 #include "code\modules\ruins\objects_and_mobs\ash_walker_den.dm"
 #include "code\modules\ruins\objects_and_mobs\necropolis_gate.dm"
 #include "code\modules\ruins\objects_and_mobs\sin_ruins.dm"
@@ -3741,5 +3742,4 @@
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
-#include "code/modules/ruins/wasteplanet_ruin_code/recycling.dm"
 // END_INCLUDE
