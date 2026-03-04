@@ -14,9 +14,6 @@
 	var/obj/item/gun/energy/minigun/gun
 	var/obj/item/stock_parts/cell/minigun/battery
 	var/armed = 0 //whether the gun is attached, 0 is attached, 1 is the gun is wielded.
-	var/overheat = 0
-	var/overheat_max = 40
-	var/heat_diffusion = 1
 	var/spawn_with_gun = TRUE
 
 /obj/item/minigunpack/Initialize()
@@ -34,9 +31,6 @@
 	QDEL_NULL(battery)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
-
-/obj/item/minigunpack/process(seconds_per_tick)
-	overheat = max(0, overheat - heat_diffusion)
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/minigunpack/attack_hand(mob/living/carbon/user)
@@ -151,17 +145,6 @@
 		ammo_pack.attach_gun(user)
 	else
 		qdel(src)
-
-/obj/item/gun/energy/minigun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	if(ammo_pack && ammo_pack.overheat >= ammo_pack.overheat_max)
-		to_chat(user, span_warning("The gun's heat sensor locked the trigger to prevent lens damage!"))
-		return
-	..()
-	ammo_pack.overheat += burst_size
-	if(ammo_pack.battery)
-		var/totransfer = min(100, ammo_pack.battery.charge)
-		var/transferred = cell.give(totransfer)
-		ammo_pack.battery.use(transferred)
 
 /obj/item/gun/energy/minigun/afterattack(atom/target, mob/living/user, flag, params)
 	if(!ammo_pack || ammo_pack.loc != user)
