@@ -1,39 +1,3 @@
-// Old arm computer for mobile surgical operation
-
-/obj/item/surgical_processor/doppler_implant
-	name = "wrist surgical processor"
-	desc = "A complex wrist computer that allows you to process advanced surgeries without assistance of a bulkier computer."
-	loaded_surgeries = list(
-		/datum/surgery/healing/brute/upgraded/femto,
-		/datum/surgery/healing/burn/upgraded/femto,
-		/datum/surgery/healing/combo/upgraded/femto,
-		/datum/surgery/advanced/wing_reconstruction,
-		/datum/surgery/advanced/experimental_dissection,
-		/datum/surgery/advanced/lobotomy,
-		/datum/surgery/advanced/lobotomy/mechanic,
-	)
-
-/obj/item/organ/cyberimp/arm/toolkit/arm_surgery_computer
-	name = "implanted wrist surgical processor"
-	desc = "An integrated surgical processor implanted within the user's wrist. \
-		Allows mobile operation of more advanced medical surgery."
-	items_to_create = list(/obj/item/surgical_processor/doppler_implant)
-	icon = 'modular_doppler/cool_implants/icons/implants.dmi'
-	icon_state = "hackerman"
-
-/obj/item/organ/cyberimp/arm/toolkit/arm_surgery_computer/on_bodypart_insert(obj/item/bodypart/limb, movement_flags)
-	ADD_TRAIT(owner, TRAIT_FASTMED, IMPLANT_TRAIT)
-	return ..()
-
-/obj/item/organ/cyberimp/arm/toolkit/arm_surgery_computer/on_mob_remove(mob/living/carbon/arm_owner)
-	. = ..()
-	if(arm_owner)
-		REMOVE_TRAIT(arm_owner, TRAIT_FASTMED, IMPLANT_TRAIT)
-
-/obj/item/autosurgeon/syndicate/arm_surgery_computer
-	name = "surgical processor autosurgeon"
-	starting_organ = /obj/item/organ/cyberimp/arm/toolkit/arm_surgery_computer
-
 // Razorwire implant, long reach whip made of extremely thin wire, ouch!
 
 /obj/item/melee/razorwire
@@ -41,23 +5,19 @@
 	desc = "A long length of monomolecular filament, built into the back of your hand. \
 		Impossibly thin and flawlessly sharp, it should slice through organic materials with no trouble. \
 		Results against anything more durable will heavily vary, however."
-	icon = 'modular_doppler/cool_implants/icons/implants.dmi'
+	icon = 'cool_implants/icons/implants.dmi'
 	icon_state = "razorwire_weapon"
-	righthand_file = 'modular_doppler/cool_implants/icons/inhands/lefthand.dmi'
-	lefthand_file = 'modular_doppler/cool_implants/icons/inhands/righthand.dmi'
-	inhand_icon_state = "razorwire"
+	righthand_file = 'cool_implants/icons/inhands/lefthand.dmi'
+	lefthand_file = 'cool_implants/icons/inhands/righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	sharpness = SHARP_EDGED
 	force = 20
 	demolition_mod = 0.25 // This thing sucks at destroying stuff
 	wound_bonus = 10
-	exposed_wound_bonus = 20
-	weak_against_armour = TRUE
-	hitsound = 'sound/items/weapons/whip.ogg'
-	attack_verb_continuous = list("slashes", "whips", "lashes", "lacerates")
-	attack_verb_simple = list("slash", "whip", "lash", "lacerate")
+	bare_wound_bonus = 20
+	hitsound = 'sound/weapons/whip.ogg'
+	attack_verb = list("slashed", "whipped", "lashed", "lacerates")
 	obj_flags = UNIQUE_RENAME | INFINITE_RESKIN
-	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Evil Red" = list(
 			RESKIN_ICON_STATE = "razorwire_weapon",
@@ -86,7 +46,7 @@
 	desc = "An integrated spool of razorwire, capable of being used as a weapon when whipped at your foes. \
 		Built into the back of your hand, try your best to not get it tangled."
 	items_to_create = list(/obj/item/melee/razorwire)
-	icon = 'modular_doppler/cool_implants/icons/implants.dmi'
+	icon = 'cool_implants/icons/implants.dmi'
 	icon_state = "razorwire"
 
 /obj/item/autosurgeon/syndicate/razorwire
@@ -99,19 +59,17 @@
 	name = "shell launch system"
 	desc = "A mounted cannon seated comfortably in a forearm compartment. Comes with a seemingly endless stock of \
 		proprietary shells within that the user can switch between with some concentration."
-	icon = 'modular_doppler/cool_implants/icons/implants.dmi'
+	icon = 'cool_implants/icons/implants.dmi'
 	icon_state = "shell_cannon_weapon"
-	righthand_file = 'modular_doppler/cool_implants/icons/inhands/lefthand.dmi'
-	lefthand_file = 'modular_doppler/cool_implants/icons/inhands/righthand.dmi'
-	inhand_icon_state = "shell_cannon"
-	worn_icon = 'icons/mob/clothing/belt.dmi'
-	worn_icon_state = "gun"
+	righthand_file = 'cool_implants/icons/inhands/lefthand.dmi'
+	lefthand_file = 'cool_implants/icons/inhands/righthand.dmi'
+	icon_state = "shell_cannon"
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_LIGHT
 	force = 10
-	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/shell_cannon
+	default_ammo_type = /obj/item/ammo_box/magazine/internal/shot/shell_cannon
 	obj_flags = UNIQUE_RENAME
-	rack_sound = 'sound/items/weapons/gun/general/chunkyrack.ogg'
+	rack_sound = 'sound/weapons/gun/implant/chunkyrack.ogg'
 	semi_auto = TRUE
 	can_be_sawn_off = FALSE
 	pb_knockback = 2
@@ -191,7 +149,7 @@
 	name = "shell launch system implant"
 	desc = "A mounted, single-shot housing for a shell launch cannon; capable of firing .980 Tydhouer grenades."
 	items_to_create = list(/obj/item/gun/ballistic/shotgun/shell_launcher)
-	icon = 'modular_doppler/cool_implants/icons/implants.dmi'
+	icon = 'cool_implants/icons/implants.dmi'
 	icon_state = "shell_cannon"
 
 /obj/item/autosurgeon/syndicate/shell_launcher

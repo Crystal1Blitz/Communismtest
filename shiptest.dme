@@ -3805,6 +3805,8 @@
 #include "code\modules\vending\youtool.dm"
 #include "code\modules\zombie\items.dm"
 #include "code\modules\zombie\organs.dm"
+#include "cool_implants\code\augments_arms.dm"
+#include "cool_implants\code\tydhouer_980.dm"
 #include "interface\interface.dm"
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
